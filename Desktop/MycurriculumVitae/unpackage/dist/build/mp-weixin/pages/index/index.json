@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "个人简历",
+  "usingComponents": {
+    "uni-collapse": "/components/uni-collapse/uni-collapse",
+    "uni-collapse-item": "/components/uni-collapse-item/uni-collapse-item",
+    "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar",
+    "uni-section": "/components/uni-section/uni-section"
+  }
+}

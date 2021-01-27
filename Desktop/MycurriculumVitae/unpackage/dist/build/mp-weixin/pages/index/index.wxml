@@ -1,0 +1,153 @@
+<view>
+  <view>
+    <swiper class="card-swiper" style="height:230px;" indicator-dots="{{true}}" circular="{{true}}" autoplay="true"
+      interval="2000" duration="500" indicator-color="#8799a3" indicator-active-color="#fff"
+      data-event-opts="{{[['change',[['cardSwiper',['$event']]]]]}}" bindchange="__e">
+      <block wx:for="{{swiperList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <swiper-item class="{{[cardCur==index?'cur':'']}}">
+          <view class="swiper-item">
+            <block wx:if="{{item.type=='image'}}">
+              <image class="swiperimage" src="{{item.url}}" mode="aspectFill"></image>
+            </block>
+            <block wx:if="{{item.type=='video'}}"><video src="{{item.url}}" autoplay="{{true}}" loop="{{true}}"
+                show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" muted="{{true}}"></video></block>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view style="padding:10px;">
+    <view class="title">
+      <view></view>
+      <view>个人信息</view>
+    </view>
+    <view class="card">
+      <uni-collapse class="warp vue-ref" bind:change="__e" vue-id="8dd740cc-1" data-ref="add"
+        data-event-opts="{{[['^change',[['List_click',[1]]]]]}}" bind:__l="__l" vue-slots="{{['default']}}">
+        <uni-collapse-item vue-id="{{('8dd740cc-2')+','+('8dd740cc-1')}}"
+          thumb="{{listimgurl1==false?'../../static/1.png':'../../static/1_click.png'}}" open="{{false}}"
+          show-animation="{{true}}" disabled="{{false}}" title="基本信息" bind:__l="__l" vue-slots="{{['default']}}">
+          <view>
+            <view class="personage_box">
+              <view class="personage_left">
+                <view><text>姓名:</text><text>{{Mydatas.Data.name}}</text></view>
+                <view><text>性别:</text><text>{{Mydatas.Data.sex}}</text></view>
+                <view><text>民族:</text><text>{{Mydatas.Data.nation}}</text></view>
+                <view><text>籍贯:</text><text>{{Mydatas.Data.nativePlace}}</text></view>
+                <view><text>专业:</text><text>{{Mydatas.Data.specialty}}</text></view>
+                <view><text>年龄:</text><text>{{Mydatas.Data.age}}</text></view>
+              </view>
+              <view class="personage_right">
+                <image src="../../static/my1.jpg" mode></image>
+              </view>
+            </view>
+            <view class="basic dis_class">
+              <view><text>最高学历:</text><text>{{Mydatas.Data.education}}</text></view>
+              <view><text>居住地址:</text><text>{{Mydatas.Data.residentialAddress}}</text></view>
+            </view>
+            <view class="basic">
+              <view style="width:100%;"><text>邮箱:</text><text>{{Mydatas.Data.email}}</text></view>
+            </view>
+          </view>
+        </uni-collapse-item>
+      </uni-collapse>
+    </view>
+    <view class="card">
+      <uni-collapse class="warp vue-ref" bind:change="__e" vue-id="8dd740cc-3" data-ref="add"
+        data-event-opts="{{[['^change',[['List_click',[2]]]]]}}" bind:__l="__l" vue-slots="{{['default']}}">
+        <uni-collapse-item class="uni-collapse-item" vue-id="{{('8dd740cc-4')+','+('8dd740cc-3')}}"
+          thumb="{{listimgurl2==false?'../../static/2.png':'../../static/2_click.png'}}" open="{{false}}"
+          show-animation="{{true}}" disabled="{{false}}" title="工作经历" bind:__l="__l" vue-slots="{{['default']}}">
+          <view class="content2">
+            <block wx:for="{{Mydatas.work}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+              <view class="work">
+                <view class="basic dis_class">
+                  <view><text>公司:</text><text>{{item.company}}</text></view>
+                  <view><text>职位:</text><text>{{item.post}}</text></view>
+                </view>
+                <view class="basic">
+                  <view><text>日期:</text><text>{{item.time}}</text></view>
+                </view>
+                <view class="basic">
+                  <view style="width:100%;"><text>使用技术:</text>
+                    <block wx:for="{{item.technology}}" wx:for-item="item2" wx:for-index="index" wx:key="index">
+                      <text>{{item.technology[index]}}</text></block>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </uni-collapse-item>
+      </uni-collapse>
+    </view>
+    <view class="card">
+      <uni-collapse class="warp vue-ref" bind:change="__e" vue-id="8dd740cc-5" data-ref="add"
+        data-event-opts="{{[['^change',[['List_click',[3]]]]]}}" bind:__l="__l" vue-slots="{{['default']}}">
+        <uni-collapse-item class="uni-collapse-item" vue-id="{{('8dd740cc-6')+','+('8dd740cc-5')}}"
+          thumb="{{listimgurl3==false?'../../static/3.png':'../../static/3_click.png'}}" open="{{false}}"
+          show-animation="{{true}}" disabled="{{false}}" title="项目经验" bind:__l="__l" vue-slots="{{['default']}}">
+          <view class="content2">
+            <block wx:for="{{Mydatas.project}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+              <view class="work">
+                <view class="basic">
+                  <view><text>项目名:</text><text>{{item.projectName}}</text></view>
+                  <view><text>日期:</text><text>{{item.projectTime}}</text></view>
+                </view>
+                <view class="basic">
+                  <view style="width:100%;"><text>使用技术:</text>
+                    <block wx:for="{{item.technology}}" wx:for-item="item3" wx:for-index="index" wx:key="index">
+                      <text>{{item.technology[index]}}</text></block>
+                  </view>
+                </view>
+                <view class="basic">
+                  <view style="width:100%;"><text>关键技术:</text>
+                    <block wx:for="{{item.lightspot}}" wx:for-item="item4" wx:for-index="index" wx:key="index">
+                      <text>{{item.lightspot[index]}}</text></block>
+                  </view>
+                </view>
+                <view class="basic">
+                  <view style="width:100%;"><text>项目简介:</text><text>{{item.introductory}}</text></view>
+                </view>
+              </view>
+            </block>
+            <view style="text-align:center;font-size:12px;color:#000;">（为了突出技术性，只枚举三个项目）</view>
+          </view>
+        </uni-collapse-item>
+      </uni-collapse>
+    </view>
+    <view class="card">
+      <uni-collapse class="warp vue-ref" bind:change="__e" vue-id="8dd740cc-7" data-ref="add"
+        data-event-opts="{{[['^change',[['List_click',[4]]]]]}}" bind:__l="__l" vue-slots="{{['default']}}">
+        <uni-collapse-item class="uni-collapse-item" vue-id="{{('8dd740cc-8')+','+('8dd740cc-7')}}"
+          thumb="{{listimgurl4==false?'../../static/4.png':'../../static/4_click.png'}}" open="{{false}}"
+          show-animation="{{true}}" disabled="{{false}}" title="最高学历" bind:__l="__l" vue-slots="{{['default']}}">
+          <view class="content2">
+            <view class="basic dis_class">
+              <view><text>毕业学院:</text><text>{{Mydatas.education.college}}</text></view>
+              <view><text>毕业时间:</text><text>{{Mydatas.education.graduateTime}}</text></view>
+            </view>
+            <view class="basic dis_class">
+              <view><text>最高学历:</text><text>{{Mydatas.education.educations}}</text></view>
+              <view><text>专业:</text><text>{{Mydatas.education.specialty}}</text></view>
+            </view>
+          </view>
+        </uni-collapse-item>
+      </uni-collapse>
+    </view>
+    <view class="card">
+      <uni-collapse class="warp vue-ref" bind:change="__e" vue-id="8dd740cc-9" data-ref="add"
+        data-event-opts="{{[['^change',[['List_click',[5]]]]]}}" bind:__l="__l" vue-slots="{{['default']}}">
+        <uni-collapse-item class="uni-collapse-item" vue-id="{{('8dd740cc-10')+','+('8dd740cc-9')}}"
+          thumb="{{listimgurl5==false?'../../static/5.png':'../../static/5_click.png'}}" open="{{false}}"
+          show-animation="{{true}}" disabled="{{false}}" title="自我评价" bind:__l="__l" vue-slots="{{['default']}}">
+          <view class="content2" style="padding:10px 5px;"><text
+              style="word-wrap:break-word;word-break:normal;">{{Mydatas.evaluate.isEvaluate}}</text></view>
+        </uni-collapse-item>
+      </uni-collapse>
+    </view>
+  </view>
+  <view class="example-body" style="background-color:#fff;">
+    <uni-notice-bar style="background-color:#fff;" vue-id="8dd740cc-11" show-icon="{{true}}" scrollable="{{true}}"
+      single="{{true}}" text="本程序仅为个人展示 , 涉及的个人信息仅为求职展示 , 如有取用 , 违法必究 。" bind:__l="__l"></uni-notice-bar>
+  </view>
+</view>
